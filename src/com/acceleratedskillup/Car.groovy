@@ -4,12 +4,10 @@ class Car {
   int numberOfDoors
   String brand
   String model
-  String a
   def script
   
-	MyCar(script) {
+	Car(script) {
 		this.script = script
-		this.a = script.getClass()
 	}
 	
   	void printOutCar() {
@@ -17,7 +15,6 @@ class Car {
   		script.echo "numberOfDoors:${numberOfDoors}"    	
 		script.echo "brand:${brand}"    	
 		script.echo "model:${model}"
-		script.echo "a:${a}"
   	}  
   
 }
