@@ -18,6 +18,7 @@ class Car {
 		script.echo "brand:${brand}"    	
 		script.echo "model:${model}"
 		script.echo "a:${a}"
+		println "ahihi"
   	}  
   
 }
