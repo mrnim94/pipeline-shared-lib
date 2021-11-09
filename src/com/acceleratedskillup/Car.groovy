@@ -7,7 +7,7 @@ class Car {
   String a
   def script
   
-	Car(script) {
+	MyCar(script) {
 		this.script = script
 		this.a = script.getClass()
 	}
@@ -18,7 +18,6 @@ class Car {
 		script.echo "brand:${brand}"    	
 		script.echo "model:${model}"
 		script.echo "a:${a}"
-		println "ahihi"
   	}  
   
 }
