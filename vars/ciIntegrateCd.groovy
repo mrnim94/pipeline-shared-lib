@@ -15,13 +15,11 @@ def call(Map parameters = [:]) {
             ])  
         }
         stage('Build images') {
-            steps {
-                // sh "docker build -t ${IMAGE_NAME}:latest ."
-                // sh "docker build -t ${IMAGE_NAME}:${GIT_HASH} ."
-                script {
-                  app_latest = docker.build nameImage + ":latest"
-                  app_version = docker.build nameImage + ":$GIT_HASH"
-                }
+            // sh "docker build -t ${IMAGE_NAME}:latest ."
+            // sh "docker build -t ${IMAGE_NAME}:${GIT_HASH} ."
+            script {
+                app_latest = docker.build nameImage + ":latest"
+                app_version = docker.build nameImage + ":$GIT_HASH"
             }
         }
     }
