@@ -34,7 +34,8 @@ def call(Map parameters = [:]) {
         stage('Deploy the workload') {
             sh(returnStdout: true,
                 script: """
-                    spin -h
+                    spin -h\
+                    date
                     """,
                 label: "integrate_spinnaker")
         }
