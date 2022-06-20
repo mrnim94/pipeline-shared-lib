@@ -5,20 +5,24 @@ def call(Map parameters = [:]) {
         ]
     )
     node('jenkins-vm') {
-        stage('build'){
+        stage('Checkout'){
             checkout([
                 $class: 'GitSCM', 
                 branches: [[name: "origin/${BRANCH_NAME}"]], 
                 userRemoteConfigs: [[
                     url: scm.userRemoteConfigs[0].url
                 ]]
-            ])
-            // def  myCustomUbuntuImage = docker.build("my-ubuntu:my-latest")
-            
-            // myCustomUbuntuImage.inside{
-            //     sh 'cat /etc/lsb-release'
-            // }
-            
+            ])  
+        }
+        stage('Create images') {
+            steps {
+                // sh "docker build -t ${IMAGE_NAME}:latest ."
+                // sh "docker build -t ${IMAGE_NAME}:${GIT_HASH} ."
+                script {
+                  app_latest = docker.build nameImage + ":latest"
+                  app_version = docker.build nameImage + ":$GIT_HASH"
+                }
+            }
         }
     }
 }
