@@ -31,5 +31,12 @@ def call(Map parameters = [:]) {
                 customImage.push()
             }
         }
+        stage(Deploy the workload) {
+            sh(returnStdout: true,
+                script: """
+                    spin -h
+                    """,
+                label: "integrate_spinnaker")
+        }
     }
 }
