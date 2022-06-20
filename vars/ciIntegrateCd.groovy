@@ -14,7 +14,7 @@ def call(Map parameters = [:]) {
                 ]]
             ])  
         }
-        stage('Create images') {
+        stage('Build images') {
             steps {
                 // sh "docker build -t ${IMAGE_NAME}:latest ."
                 // sh "docker build -t ${IMAGE_NAME}:${GIT_HASH} ."
