@@ -21,14 +21,15 @@ def call(Map parameters = [:]) {
                 ]]
             ])  
         }
-        stage('Build images') {
-            docker.build("${this.project}:${env.BUILD_ID}")
-            // sh "docker build -t ${IMAGE_NAME}:latest ."
-            // sh "docker build -t ${IMAGE_NAME}:${GIT_HASH} ."
-            // script {
-            //     app_latest = docker.build nameImage + ":latest"
-            //     app_version = docker.build nameImage + ":$GIT_HASH"
-            // }
+        stage('Build and Push images') {
+
+            docker.withRegistry('https://docker.nimtechnology.com', 'private-docker-hub') {
+
+                def customImage = docker.build("docker.nimtechnology.com/nim/${this.project}:${env.BUILD_ID}")
+
+                /* Push the container to the custom Registry */
+                customImage.push()
+            }
         }
     }
 }
