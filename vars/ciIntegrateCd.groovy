@@ -33,7 +33,7 @@ def call(Map parameters = [:]) {
         }
         stage('Deploy the workload') {
             sh "spin application save --application-name ${this.project} --owner-email mr.nim94@gmail.com --cloud-providers 'kubernetes' --config /var/lib/jenkins/.spin/config-nimtechnology"
-            sh '''cat << EOF > /var/lib/jenkins/.spin/pipe/file1.json
+            sh """cat << EOF > /var/lib/jenkins/.spin/pipe/file1.json
 {
     "name": "pipeline-${this.project}",
     "application": "${this.project}",
@@ -58,7 +58,8 @@ def call(Map parameters = [:]) {
         "workloadName": "default-nimtechnology"
     }
 }
-            '''
+EOF
+            """
         }
     }
 }
