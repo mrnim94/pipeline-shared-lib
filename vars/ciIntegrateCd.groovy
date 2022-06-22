@@ -32,7 +32,7 @@ def call(Map parameters = [:]) {
             }
         }
         stage('Deploy the workload') {
-            sh "spin application save --application-name ${this.project} --owner-email mr.nim94@gmail.com --cloud-providers "kubernetes" --config ./.spin/config-nimtechnology"
+            sh "spin application save --application-name ${this.project} --owner-email mr.nim94@gmail.com --cloud-providers 'kubernetes' --config ./.spin/config-nimtechnology"
         }
     }
 }
