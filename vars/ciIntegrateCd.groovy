@@ -33,6 +33,33 @@ def call(Map parameters = [:]) {
         }
         stage('Deploy the workload') {
             sh "spin application save --application-name ${this.project} --owner-email mr.nim94@gmail.com --cloud-providers 'kubernetes' --config /var/lib/jenkins/.spin/config-nimtechnology"
+            sh '''cat << EOF > /var/lib/jenkins/.spin/pipe/file1.json
+            {
+                "name": "pipeline-is-created-by-command",
+                "application": "my-app",
+                "exclude": [],
+                "keepWaitingPipelines": false,
+                "lastModifiedBy": "anonymous",
+                "limitConcurrent": true,
+                "notifications": [],
+                "parameterConfig": [],
+                "schema": "v2",
+                "stages": [],
+                "template": {
+                    "artifactAccount": "front50ArtifactCredentials",
+                    "reference": "spinnaker://nimtSpinnakerTemplateV1",
+                    "type": "front50/pipelineTemplate"
+                },
+                "triggers": [],
+                "type": "templatedPipeline",
+                "updateTs": "1652627797000",
+                "variables": {
+                    "kind": "deployment",
+                    "workloadName": "default-nimtechnology"
+                }
+            }
+            EOF
+            '''
         }
     }
 }
