@@ -63,6 +63,7 @@ def call(Map parameters = [:]) {
 EOF
             """
             sh "spin pi save --file /var/lib/jenkins/.spin/pipe/pipeline-${this.project}.json --config /var/lib/jenkins/.spin/config-nimtechnology"
+            sh "spin pipeline execute --name pipeline-${this.project} --application ${this.project}"
         }
     }
 }
