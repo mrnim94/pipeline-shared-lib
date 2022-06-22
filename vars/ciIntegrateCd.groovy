@@ -47,15 +47,17 @@ def call(Map parameters = [:]) {
     "stages": [],
     "template": {
         "artifactAccount": "front50ArtifactCredentials",
-        "reference": "spinnaker://nimtSpinnakerTemplateV1",
+        "reference": "spinnaker://nimtSpinnakerTemplateV2",
         "type": "front50/pipelineTemplate"
     },
     "triggers": [],
     "type": "templatedPipeline",
     "updateTs": "1652627797000",
     "variables": {
-        "kind": "deployment",
-        "workloadName": "default-nimtechnology"
+        "replicaCount": "1",
+        "imageRepository": "docker.nimtechnology.com/nim/${this.project}",
+        "imageTag": "${env.BUILD_ID}"
+        "servicePort": "80"
     }
 }
 EOF
