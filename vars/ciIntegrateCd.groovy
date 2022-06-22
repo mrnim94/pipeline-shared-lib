@@ -57,7 +57,7 @@ def call(Map parameters = [:]) {
         "replicaCount": 1,
         "imageRepository": "docker.nimtechnology.com/nim/${this.project}",
         "imageTag": "${env.BUILD_ID}",
-        "servicePort": 80
+        "servicePort": 8080
     }
 }
 EOF
