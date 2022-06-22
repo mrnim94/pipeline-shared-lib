@@ -54,10 +54,10 @@ def call(Map parameters = [:]) {
     "type": "templatedPipeline",
     "updateTs": "1652627797000",
     "variables": {
-        "replicaCount": "1",
+        "replicaCount": 1,
         "imageRepository": "docker.nimtechnology.com/nim/${this.project}",
         "imageTag": "${env.BUILD_ID}",
-        "servicePort": "80"
+        "servicePort": 80
     }
 }
 EOF
