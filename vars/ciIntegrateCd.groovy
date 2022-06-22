@@ -56,7 +56,7 @@ def call(Map parameters = [:]) {
     "variables": {
         "replicaCount": "1",
         "imageRepository": "docker.nimtechnology.com/nim/${this.project}",
-        "imageTag": "${env.BUILD_ID}"
+        "imageTag": "${env.BUILD_ID}",
         "servicePort": "80"
     }
 }
